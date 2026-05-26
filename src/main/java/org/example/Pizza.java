@@ -1,22 +1,16 @@
 package org.example;
 
-package flyweight;
+package iterator;
 
 public class Pizza {
 
-    private String sabor;
-    private MassaFlyweight massa;
+    private String nome;
 
-    public Pizza(String sabor, String tipoMassa) {
-        this.sabor = sabor;
-        this.massa = FabricaMassa.getMassa(tipoMassa);
+    public Pizza(String nome) {
+        this.nome = nome;
     }
 
-    public String getSabor() {
-        return sabor;
-    }
-
-    public MassaFlyweight getMassa() {
-        return massa;
+    public String getNome() {
+        return nome;
     }
 }

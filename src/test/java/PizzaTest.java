@@ -1,7 +1,4 @@
-package flyweight;
-
-public class PizzaTest {
-}
+package iterator;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,20 +6,23 @@ import static org.junit.jupiter.api.Assertions.*;
 class PizzaTest {
 
     @Test
-    void deveCompartilharMassas() {
+    void devePercorrerCardapio() {
 
-        Pizza pizza1 = new Pizza("Calabresa", "Tradicional");
-        Pizza pizza2 = new Pizza("Frango", "Tradicional");
+        Cardapio cardapio = new Cardapio();
 
-        assertEquals(1, FabricaMassa.getTotalMassas());
-    }
+        cardapio.adicionarPizza(new Pizza("Calabresa"));
+        cardapio.adicionarPizza(new Pizza("Frango"));
+        cardapio.adicionarPizza(new Pizza("Portuguesa"));
 
-    @Test
-    void deveCriarMassasDiferentes() {
+        Iterator iterator = cardapio.createIterator();
 
-        Pizza pizza1 = new Pizza("Calabresa", "Tradicional");
-        Pizza pizza2 = new Pizza("Frango", "Fina");
+        int quantidade = 0;
 
-        assertEquals(2, FabricaMassa.getTotalMassas());
+        while (iterator.hasNext()) {
+            Pizza pizza = (Pizza) iterator.next();
+            quantidade++;
+        }
+
+        assertEquals(3, quantidade);
     }
 }
